@@ -4,7 +4,6 @@ public class SortState {
     private final int[] currentArray;
     private final int currentCycleIterationNumber;
     private int elementIndex = -1;
-    private boolean arraySorted = false;
 
     public SortState(int[] arr, int cycleIteration, int element) {
         currentArray = new int[arr.length];
@@ -13,11 +12,10 @@ public class SortState {
         elementIndex = element;
     }
 
-    public SortState(int[] arr, int cycleIteration, boolean isSorted) {
+    public SortState(int[] arr, int cycleIteration) {
         currentArray = new int[arr.length];
         System.arraycopy(arr, 0, currentArray, 0, currentArray.length);
         currentCycleIterationNumber = cycleIteration;
-        arraySorted = isSorted;
     }
 
     public int[] getArray () {return currentArray;}
@@ -26,5 +24,14 @@ public class SortState {
 
     public int getElementIndex () {return elementIndex;}
 
-    public boolean isSorted () {return arraySorted;}
+    public boolean isSorted () {
+        int temp = currentArray[0];
+        for (int i = 1; i < currentArray.length; i++) {
+            if (temp > currentArray[i]) {
+                return false;
+            }
+            temp = currentArray[i];
+        }
+        return true;
+    }
 }

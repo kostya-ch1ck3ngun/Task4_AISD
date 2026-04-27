@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GnomeSort {
-    public static List<SortState> sort(int[] arr) {
+    public static List<SortState> sort(int[] arr) { //O(n^2), n - количество элементов
         List<SortState> sortStateList = new ArrayList<>();
 
         int cyclesCount = 0;
@@ -34,7 +34,7 @@ public class GnomeSort {
 
             cyclesCount++;
         }
-        SortState currentState = new SortState(arr, cyclesCount, true);
+        SortState currentState = new SortState(arr, cyclesCount);
         sortStateList.add(currentState);
 
         return sortStateList;
@@ -75,7 +75,7 @@ public class GnomeSort {
 
             cyclesCount++;
         }
-        SortState currentState = new SortState(arr, cyclesCount, true);
+        SortState currentState = new SortState(arr, cyclesCount);
         sortStateList.add(currentState);
 
         return sortStateList;
